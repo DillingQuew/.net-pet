@@ -1,3 +1,4 @@
+using WebApplication1.Models;
 using WebApplication1.Services;
 
 namespace WebApplication1;
@@ -7,10 +8,17 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-
+        
+        builder.Services.Configure<BookStoreDatabaseSettings>(
+            builder.Configuration.GetSection("BookStoreDatabase"));
+        builder.Services.AddSingleton<BooksService>();
         builder.Services.AddSingleton<UserService>();
         // Add services to the container.
         builder.Services.AddControllersWithViews();
+        
+        builder.Services.AddControllers() .AddJsonOptions(
+            options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
+        
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.

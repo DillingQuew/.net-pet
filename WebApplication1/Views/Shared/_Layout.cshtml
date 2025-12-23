@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - WebApplication1</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+</head>
+<body>
+    <header>
+        <span class="logo">Изучаем ASP .NET Core MVC</span>
+        <nav>
+            <a asp-controller="User" asp-action="Index">Управление пользователями</a>
+            <a asp-controller="Home" asp-action="Privacy">Политика конфиденциальности</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+<footer class="footer">
+    Все права защищены - 2025
+</footer>
+
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,8 +1,9 @@
 @model List<WebApplication1.Models.Book>
 
 @{
-    ViewData["Title"] = "Управление пользователями";
+    ViewData["Title"] = "Управление книгами";
 }
+<h1>@ViewData["Title"]</h1>
 <a asp-controller="Book" asp-action="AddPage">Добавить книгу</a>
 <table class="table mt-4">
     <thead>

@@ -28,13 +28,11 @@ public class UserController : Controller
         return RedirectToAction("Index");
     }
 
-    public async Task<IActionResult> Select(string id)
+    public async Task<IActionResult> Edit(string id)
     {
         var user = await _userService.GetAsync(id);
-        // ViewData["SelectedUser"] = user;
         ViewBag.SelectedUser = user;
-        
-        return View("Index", await _userService.GetListAsync());
+        return View("Edit");
     }
 
     [HttpPost]
@@ -44,7 +42,12 @@ public class UserController : Controller
         return RedirectToAction("Index");
     }
 
-    public IActionResult Reset()
+    public IActionResult AddPage()
+    {
+        return View("Edit");
+    }
+
+    public IActionResult Cancel()
     {
         return RedirectToAction("Index");
     }

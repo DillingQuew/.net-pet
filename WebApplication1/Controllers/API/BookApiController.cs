@@ -6,11 +6,11 @@ namespace WebApplication1.Controllers.API;
 
 [ApiController]
 [Route("api/[controller]")]
-public class BooksApiController : ControllerBase
+public class BookApiController : ControllerBase
 {
     private readonly BookService _booksService;
 
-    public BooksApiController(BookService booksService) =>
+    public BookApiController(BookService booksService) =>
         _booksService = booksService;
 
     [HttpGet]

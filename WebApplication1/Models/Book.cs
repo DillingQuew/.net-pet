@@ -13,7 +13,7 @@ public class Book
     [BsonElement("Name")]
     [JsonPropertyName("Name")]
     
-    [Required]
+    [Required (ErrorMessage = "Название книги обязательно")]
     public string BookName { get; set; }
     [Required]
     public decimal Price { get; set; }

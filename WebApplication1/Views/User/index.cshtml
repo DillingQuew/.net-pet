@@ -1,3 +1,4 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model List<WebApplication1.Models.User>
 @{
     ViewData["Title"] = "Управление пользователями";
@@ -16,7 +17,7 @@
 
 <form method="POST" asp-action="Save">
     <div class="form-group">
-        <input type="hidden" name="id" value="@(ViewBag.SelectedUser?.Id ?? 0)"/>
+        <input type="hidden" name="id" value="@(ViewBag.SelectedUser?.Id ?? null)"/>
         
         <div class="form-group">
             <label for="Login">Логин</label>

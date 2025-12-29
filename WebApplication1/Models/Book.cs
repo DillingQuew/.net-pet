@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
@@ -11,11 +12,13 @@ public class Book
     public string? Id { get; set; }
     [BsonElement("Name")]
     [JsonPropertyName("Name")]
-    public string BookName { get; set; } = null!;
-
+    
+    [Required]
+    public string BookName { get; set; }
+    [Required]
     public decimal Price { get; set; }
-
-    public string Category { get; set; } = null!;
-
-    public string Author { get; set; } = null!;
+    [Required]
+    public string Category { get; set; }
+    [Required]
+    public string Author { get; set; }
 }

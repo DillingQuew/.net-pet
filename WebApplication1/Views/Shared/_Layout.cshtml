@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -12,6 +13,7 @@
         <nav>
             <a asp-controller="User" asp-action="Index">Управление пользователями</a>
             <a asp-controller="Home" asp-action="Privacy">Политика конфиденциальности</a>
+            <a asp-controller="book" asp-action="Index">Книги</a>
         </nav>
     </header>
 

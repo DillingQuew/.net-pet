@@ -1,3 +1,4 @@
+using MongoDB.Driver;
 using WebApplication1.Models;
 using WebApplication1.Services;
 
@@ -9,11 +10,21 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
         
+        // Получаем настройки MongoDB
+       //  Зарегистрировать mongoSettings в DI
+       var mongoSettings = builder.Configuration.GetSection("BookStoreDatabase")
+            .Get<BookStoreDatabaseSettings>();
+       
+       builder.Services.AddSingleton<BookStoreDatabaseSettings>(mongoSettings!);
+        
+        // Регистрируем настройки (если нужно для других сервисов)
         builder.Services.Configure<BookStoreDatabaseSettings>(
             builder.Configuration.GetSection("BookStoreDatabase"));
-        builder.Services.AddSingleton<BooksService>();
+        
+        // Регистрируем сервисы
+        builder.Services.AddSingleton<BookService>();
         builder.Services.AddSingleton<UserService>();
-        // Add services to the container.
+        
         builder.Services.AddControllersWithViews();
         
         builder.Services.AddControllers() .AddJsonOptions(

@@ -2,20 +2,20 @@ using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Models;
 using WebApplication1.Services;
 
-namespace WebApplication1.Controllers;
+namespace WebApplication1.Controllers.API;
 
 [ApiController]
 [Route("api/[controller]")]
-public class BooksController : ControllerBase
+public class BooksApiController : ControllerBase
 {
-    private readonly BooksService _booksService;
+    private readonly BookService _booksService;
 
-    public BooksController(BooksService booksService) =>
+    public BooksApiController(BookService booksService) =>
         _booksService = booksService;
 
     [HttpGet]
     public async Task<List<Book>> Get() =>
-        await _booksService.GetAsync();
+        await _booksService.GetAsyncList();
 
     [HttpGet("{id:length(24)}")]
     public async Task<ActionResult<Book>> Get(string id)

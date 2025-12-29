@@ -8,41 +8,39 @@ public class UserController : Controller
 {
     private readonly UserService _userService;
 
-    public UserController(UserService userService)
-    {
-        _userService = userService;
-    }
+    public UserController(UserService usersService) =>
+        _userService = usersService;
     
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        var users = _userService.GetAll();
+        var users = await _userService.GetListAsync();
         return View(users);
     }
     
     [HttpPost]
-    public IActionResult Save(User user)
+    public async Task<IActionResult> Save(User user)
     {
-        if (user.Id == 0)
-            _userService.Add(user);
+        if (user.Id == null)
+            _userService.CreateAsync(user);
         else
-            _userService.Update(user);
+            _userService.UpdateAsync(user.Id, user);
         
         return RedirectToAction("Index");
     }
 
-    public IActionResult Select(int id)
+    public async Task<IActionResult> Select(string id)
     {
-        var user = _userService.GetById(id) ?? new User();
+        var user = await _userService.GetAsync(id);
         // ViewData["SelectedUser"] = user;
         ViewBag.SelectedUser = user;
         
-        return View("Index", _userService.GetAll());
+        return View("Index", await _userService.GetListAsync());
     }
 
     [HttpPost]
-    public IActionResult Delete(int id)
+    public async Task<IActionResult> Delete(string id)
     {
-        _userService.Delete(id);
+        await _userService.RemoveAsync(id);
         return RedirectToAction("Index");
     }
 

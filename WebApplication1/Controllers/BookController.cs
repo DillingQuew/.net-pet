@@ -26,6 +26,12 @@ public class BookController : Controller
 
     public async Task<IActionResult> Save(Book book)
     {
+        if (!ModelState.IsValid)
+        {
+            ViewBag.EditedBook = book;
+            return View("Edit");
+        }
+        
         if (book.Id != null)
         {
             await _bookService.UpdateAsync(book.Id, book);

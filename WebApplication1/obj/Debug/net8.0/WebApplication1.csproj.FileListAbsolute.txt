@@ -37,3 +37,4 @@
 /Users/d.bazdarev/c#/first_project/WebApplication1/WebApplication1/obj/Debug/net8.0/WebApplication1.csproj.AssemblyReference.cache
 /Users/d.bazdarev/c#/first_project/WebApplication1/WebApplication1/obj/Debug/net8.0/WebAppli.7D14BD69.Up2Date
 /Users/d.bazdarev/c#/first_project/WebApplication1/WebApplication1/obj/Debug/net8.0/WebApplication1.sourcelink.json
+/Users/d.bazdarev/c#/first_project/WebApplication1/WebApplication1/bin/Debug/net8.0/FluentValidation.dll

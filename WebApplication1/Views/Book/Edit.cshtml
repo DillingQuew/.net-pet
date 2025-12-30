@@ -6,6 +6,19 @@
 
 <h1>@ViewData["Title"]</h1>
 
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <h5>Пожалуйста, исправьте следующие ошибки:</h5>
+        <ul>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}
+
 <form method="POST" asp-action="Save">
     <div class="form-group">
         <input type="hidden" name="id" value="@(ViewBag.EditedBook?.Id)"/>

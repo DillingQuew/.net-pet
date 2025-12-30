@@ -10,15 +10,19 @@ public class Book
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
+    
     [BsonElement("Name")]
     [JsonPropertyName("Name")]
-    
     [Required (ErrorMessage = "Название книги обязательно")]
     public string BookName { get; set; }
-    [Required]
-    public decimal Price { get; set; }
-    [Required]
+    
+    [Required(ErrorMessage = "Цена обязательна")]
+    [Range(0.01, 10000, ErrorMessage = "Цена должна быть от 0.01 до 10000")]
+    public decimal? Price { get; set; }
+    
+    [Required (ErrorMessage = "Название категории обязательно")]
     public string Category { get; set; }
-    [Required]
+    
+    [Required (ErrorMessage = "Автора обязателен")]
     public string Author { get; set; }
 }

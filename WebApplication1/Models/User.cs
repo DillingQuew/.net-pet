@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
@@ -14,6 +15,8 @@ public class User
     
     [BsonElement("Name")]
     [JsonPropertyName("Name")]
+    [Required (ErrorMessage = "Имя обязательно")]
     public string Login { get; set; } = null!;
+    [Required (ErrorMessage = "Пароль обязателен")]
     public string Password { get; set; } = null!;
 }

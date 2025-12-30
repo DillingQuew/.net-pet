@@ -20,6 +20,13 @@ public class UserController : Controller
     [HttpPost]
     public async Task<IActionResult> Save(User user)
     {
+        
+        if (!ModelState.IsValid)
+        {
+            ViewBag.SelectedUser = user;
+            return View("Edit");
+        }
+        
         if (user.Id == null)
             _userService.CreateAsync(user);
         else
